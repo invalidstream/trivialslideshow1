@@ -17,20 +17,20 @@ class WindowController: NSWindowController {
 		NSLog ("WindowController.windowDidLoad")
     }
 	
-	override func prepareForSegue(segue: NSStoryboardSegue, sender: AnyObject?) {
+	override func prepare(for segue: NSStoryboardSegue, sender: AnyObject?) {
 		NSLog ("WindowController.prepareForSegue")
 	}
 	
-	func openDocument(sender: AnyObject?) {
+	func openDocument(_ sender: AnyObject?) {
 		NSLog ("WindowController.openDocument:")
 		if let contentVC = self.contentViewController as? ViewController {
 			NSLog ("found ViewController")
 			let openPanel = NSOpenPanel()
 			openPanel.allowedFileTypes = [kUTTypeJPEG as String]
 			openPanel.allowsMultipleSelection = true
-			openPanel.beginSheetModalForWindow(self.window!,
+			openPanel.beginSheetModal(for: self.window!,
 				completionHandler: { (result) -> Void in
-					contentVC.imageURLs = openPanel.URLs
+                    contentVC.imageURLs = openPanel.urls
 			})
 			
 		}

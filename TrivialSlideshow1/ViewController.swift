@@ -11,16 +11,14 @@ import Quartz
 
 class ViewController: NSViewController {
 	
-//	let image1 = NSImage(named: "preroll-nozaki-kun-03.jpg")
-//	let image2 = NSImage(named: "preroll-ef-melodies-01.jpg")
-	
-	var imageURLs : [AnyObject] = [] {
+	var imageURLs : [URL] = [] {
 		didSet {
 			NSLog ("VC got URLs: \(imageURLs)")
 		}
 	}
-	
-	var timer : NSTimer?
+    var shuffledImageURLs : [URL] = []
+    
+	var timer : Timer?
 	
 	var currentImageView : NSView?
 	
@@ -29,36 +27,39 @@ class ViewController: NSViewController {
 		
 		updateSubviewsWithDefaultTransition()
 		
-		timer = NSTimer.scheduledTimerWithTimeInterval(10.0,
+		timer = Timer.scheduledTimer(timeInterval: 10.0,
 			target: self,
-			selector: "chooseNextSlide:",
+			selector: #selector(ViewController.chooseNextSlide(_:)),
 			userInfo: nil,
 			repeats: true)
 		
 	}
 	
-	func openDocument(sender: AnyObject?) {
+	func openDocument(_ sender: AnyObject?) {
 		NSLog ("ViewController.openDocument:")
 	}
 
-	func open(sender: AnyObject?) {
+	func open(_ sender: AnyObject?) {
 		NSLog ("WindowController.open:")
 	}
 
-	func chooseNextSlide (timer: NSTimer) {
-		if imageURLs.count == 0 {
-			return
-		}
+	func chooseNextSlide (_ timer: Timer) {
+        if shuffledImageURLs.isEmpty {
+            shuffleImageURLs()
+        }
+		guard !shuffledImageURLs.isEmpty else { return }
 		
-		let index = Int(arc4random()) % imageURLs.count
-		NSLog ("choose index \(index)")
-		if let URL = imageURLs[index] as? NSURL {
-			if let image = NSImage (contentsOfURL: URL) {
-				transitionToImage(image)
-			}
-		}
+        let url = shuffledImageURLs.removeFirst()
+        if let image = NSImage(contentsOf: url) {
+            transitionToImage(image)
+        }
 	}
 	
+    private func shuffleImageURLs() {
+        guard !imageURLs.isEmpty else { return }
+        shuffledImageURLs = imageURLs.shuffled()
+    }
+    
 	
 	// MARK - from Apple ImageTransition example
 	func updateSubviewsWithDefaultTransition() {
@@ -69,20 +70,20 @@ class ViewController: NSViewController {
 
 	}
 	
-	func transitionToImage (newImage: NSImage?) {
+	func transitionToImage (_ newImage: NSImage?) {
 	// create a new NSImageView and swap it into the view in place of our previous NSImageView.
 	// this will trigger the transition animation we've wired up in -updateSubviewsTransition,
 	// which fires on changes in the "subviews" property.
-        // TODO: fix up with a nice if-let instead of unwraps
+        // TODO: lose the force-unwraps
         var newImageView : NSImageView? = nil
 		if let newImage = newImage {
 			newImageView = NSImageView(frame: self.view.bounds)
             newImageView?.wantsLayer = true
 //            newImageView?.layer?.borderColor = NSColor.pinkColor().CGColor
 //            newImageView?.layer?.borderWidth = 6.0
-            newImageView?.imageScaling = .ScaleProportionallyUpOrDown
+            newImageView?.imageScaling = .scaleProportionallyUpOrDown
 			newImageView!.image = newImage
-			let mask : NSAutoresizingMaskOptions = [.ViewWidthSizable, .ViewHeightSizable]
+			let mask : NSAutoresizingMaskOptions = [.viewWidthSizable, .viewHeightSizable]
 			newImageView!.autoresizingMask = mask
 		}
 	

@@ -13,6 +13,7 @@
 		0106BE2B1B121C5800C90FA0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0106BE291B121C5800C90FA0 /* Main.storyboard */; };
 		0106BE371B121C5800C90FA0 /* TrivialSlideshow1Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0106BE361B121C5800C90FA0 /* TrivialSlideshow1Tests.swift */; };
 		01287DC91B122A4B00271653 /* WindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01287DC81B122A4B00271653 /* WindowController.swift */; };
+		017AB1DF1D614CA100F1DDAE /* Collection+TrivialSlideshow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017AB1DE1D614CA100F1DDAE /* Collection+TrivialSlideshow.swift */; };
 		017FAB231B121E550061C036 /* preroll-ef-melodies-01.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 017FAB221B121E550061C036 /* preroll-ef-melodies-01.jpg */; };
 		017FAB251B121E790061C036 /* preroll-nozaki-kun-03.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 017FAB241B121E790061C036 /* preroll-nozaki-kun-03.jpg */; };
 		0187F43C1C5DBBB8006F24A3 /* NSColor+Pink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0187F43B1C5DBBB8006F24A3 /* NSColor+Pink.swift */; };
@@ -39,6 +40,7 @@
 		0106BE351B121C5800C90FA0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0106BE361B121C5800C90FA0 /* TrivialSlideshow1Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrivialSlideshow1Tests.swift; sourceTree = "<group>"; };
 		01287DC81B122A4B00271653 /* WindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindowController.swift; sourceTree = "<group>"; };
+		017AB1DE1D614CA100F1DDAE /* Collection+TrivialSlideshow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Collection+TrivialSlideshow.swift"; sourceTree = "<group>"; };
 		017FAB221B121E550061C036 /* preroll-ef-melodies-01.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "preroll-ef-melodies-01.jpg"; sourceTree = "<group>"; };
 		017FAB241B121E790061C036 /* preroll-nozaki-kun-03.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "preroll-nozaki-kun-03.jpg"; sourceTree = "<group>"; };
 		0187F43B1C5DBBB8006F24A3 /* NSColor+Pink.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSColor+Pink.swift"; sourceTree = "<group>"; };
@@ -91,6 +93,7 @@
 				0106BE291B121C5800C90FA0 /* Main.storyboard */,
 				0106BE401B121E1100C90FA0 /* Test images */,
 				0106BE211B121C5800C90FA0 /* Supporting Files */,
+				017AB1DE1D614CA100F1DDAE /* Collection+TrivialSlideshow.swift */,
 			);
 			path = TrivialSlideshow1;
 			sourceTree = "<group>";
@@ -179,9 +182,11 @@
 				TargetAttributes = {
 					0106BE1D1B121C5800C90FA0 = {
 						CreatedOnToolsVersion = 6.3.2;
+						LastSwiftMigration = 0800;
 					};
 					0106BE2F1B121C5800C90FA0 = {
 						CreatedOnToolsVersion = 6.3.2;
+						LastSwiftMigration = 0800;
 						TestTargetID = 0106BE1D1B121C5800C90FA0;
 					};
 				};
@@ -232,6 +237,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0106BE261B121C5800C90FA0 /* ViewController.swift in Sources */,
+				017AB1DF1D614CA100F1DDAE /* Collection+TrivialSlideshow.swift in Sources */,
 				01287DC91B122A4B00271653 /* WindowController.swift in Sources */,
 				0187F43C1C5DBBB8006F24A3 /* NSColor+Pink.swift in Sources */,
 				0106BE241B121C5800C90FA0 /* AppDelegate.swift in Sources */,
@@ -356,6 +362,7 @@
 				INFOPLIST_FILE = TrivialSlideshow1/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -367,6 +374,7 @@
 				INFOPLIST_FILE = TrivialSlideshow1/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -386,6 +394,7 @@
 				INFOPLIST_FILE = TrivialSlideshow1Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TrivialSlideshow1.app/Contents/MacOS/TrivialSlideshow1";
 			};
 			name = Debug;
@@ -402,6 +411,7 @@
 				INFOPLIST_FILE = TrivialSlideshow1Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TrivialSlideshow1.app/Contents/MacOS/TrivialSlideshow1";
 			};
 			name = Release;
